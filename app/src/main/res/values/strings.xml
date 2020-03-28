@@ -2,5 +2,31 @@
     <string name="app_name">TheStoryOfUS</string>
     <string name="app_name_title">The Story Of US</string>
     <string name="place_holder">Place Holder</string>
-    <string name="add_book">+</string>
+    <string name="add_book_btn">+</string>
+    <string name="submit_new_book_btn">Submit</string>
+    <string name="add_book_title">Add New Book</string>
+
+    <string-array name="books_languages">
+        <item>עברית</item>
+        <item>English</item>
+    </string-array>
+
+    <string-array name="books_genres">
+        <item>אימה</item>
+        <item>אוטוביוגרפיה</item>
+        <item>ביוגרפיה</item>
+        <item>דרמה</item>
+        <item>הרפתקאות</item>
+        <item>מדע בדיוני</item>
+        <item>מותחן</item>
+        <item>מסתורין</item>
+        <item>נוער</item>
+        <item>פנטזיה</item>
+        <item>פשע</item>
+        <item>רומן</item>
+        <item>רומן רומנטי</item>
+        <item>רומן תקופתי</item>
+        <item>שירה</item>
+    </string-array>
+
 </resources>

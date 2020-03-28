@@ -3,7 +3,6 @@
     android:id="@+id/bookBrief_itemLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="5dp"
     >
 
     <TextView
@@ -14,6 +13,7 @@
         android:text="@string/place_holder"
         android:textAppearance="@style/ListBookTitle"
         android:gravity="start"
+        android:layout_marginTop="2dp"
         />
 
     <TextView
@@ -22,8 +22,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/bookBrief_bookTitle"
         android:layout_marginTop="-2dp"
+        android:layout_marginBottom="2dp"
         android:text="@string/place_holder"
         android:textAppearance="@style/ListAuthorName"
-        android:gravity="start" />
+        android:gravity="start"
+        />
 
 </RelativeLayout>

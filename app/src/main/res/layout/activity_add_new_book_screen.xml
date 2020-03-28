@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddNewBookScreen">
+
+    <TextView
+        android:id="@+id/addNewBook_mainTitle"
+        style="@style/MainTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_book_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ScrollView
+        android:id="@+id/addNewBook_ScrollViewFields"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/addNewBook_btn_addBook"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addNewBook_mainTitle">
+
+
+        <LinearLayout
+            android:id="@+id/addNewBook_LinearLayoutFields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dividerPadding="100dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/addNewBook_nameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="שם הספר"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/addNewBook_authorInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:hint="שם המחבר/ת"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/addNewBook_publishYearInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:hint="שנת הוצאה"
+                android:inputType="date" />
+
+            <!--android:focusable="false"
+                android:onClick="showDatePickerDialog"-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layoutDirection="rtl"
+                android:text="בחרי שפה:"
+                android:textAppearance="@style/spinner_choice_label"
+                android:textDirection="rtl" />
+
+            <Spinner
+                android:id="@+id/addNewBook_languagesSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layoutDirection="rtl"
+                android:text="בחרי סוגה:"
+                android:textAppearance="@style/spinner_choice_label"
+                android:textDirection="rtl" />
+
+            <Spinner
+                android:id="@+id/addNewBook_genresSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layoutDirection="rtl"
+                android:text="האם הספר נמצא בספריה?"
+                android:textAppearance="@style/spinner_choice_label"
+                android:textDirection="rtl" />
+
+            <RadioGroup
+                android:id="@+id/addNewBook_isAvailableGroupInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layoutDirection="rtl">
+
+                <RadioButton
+                    android:id="@+id/addNewBook_isAvailableTrueInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="כן"
+                    android:textColor="@color/colorAccent" />
+
+                <RadioButton
+                    android:id="@+id/addNewBook_isAvailableFalseInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="לא"
+                    android:textColor="@color/colorAccent" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/addNewBook_btn_addBook"
+        android:layout_width="84dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_submit_all_fields"
+        android:enabled="false"
+        android:text="@string/submit_new_book_btn"
+        android:textColor="@drawable/button_submit_all_fields"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addNewBook_mainTitle"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/addNewBook_btn_clearInput"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addNewBook_btn_addBook"
+        app:layout_constraintEnd_toStartOf="@+id/addNewBook_btn_addBook"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/addNewBook_btn_addBook"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -3,8 +3,8 @@ package com.thestoryofus;
 public class Book {
 
     enum b_langs {
-        ENGLISH,
-        HEBREW
+        HEBREW,
+        ENGLISH
     }
 
     enum b_genres {
