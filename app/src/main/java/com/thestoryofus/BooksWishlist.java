@@ -32,7 +32,6 @@ public class BooksWishlist extends ListScreen {
     protected void onResume() {
         super.onResume();
         adapterSetup();
-        this.viewBooksList.setAdapter(this.viewBooksListAdapter);
     }
 
     private void adapterSetup() {
@@ -42,6 +41,7 @@ public class BooksWishlist extends ListScreen {
         int[] toViews = {R.id.bookBrief_bookTitle, R.id.bookBrief_authorName};
 
         this.viewBooksListAdapter = new SimpleCursorAdapter(this, R.layout.listitem_book_brief, booksCursor, fromColumns, toViews);
+        this.viewBooksList.setAdapter(this.viewBooksListAdapter);
     }
 
     private void addBookButtonListener() {
