@@ -95,7 +95,7 @@ public class AddNewBookScreen extends DatabaseBasedScreen implements AdapterView
                                 Integer.parseInt(AddNewBookScreen.this.inputPublishYear.getText().toString()),
                                 mapToGenre(AddNewBookScreen.this.inputGenre.getSelectedItem().toString()),
                                 AddNewBookScreen.this.inputIsAvailable.getCheckedRadioButtonId() == R.id.addNewBook_isAvailableTrueInput,
-                                true
+                                false
                         ),
                         DatetimeHelper.getNow()
                 ));

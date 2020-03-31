@@ -54,7 +54,7 @@ public class MySqliteDatabase extends SQLiteOpenHelper {
         return db.query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
     }
 
-    public Cursor getBooksReadFilterCursor(boolean isRead) {
+    public Cursor getBooksReadFilterCursor(boolean isRead, String sortByCol, boolean isOrderAsc) {
         // Which columns from the database will be used (selected)
         String[] projection = {DatabaseContract.BookEntry._ID,
                 DatabaseContract.BookEntry.COL_ADD_TIME,
@@ -70,15 +70,15 @@ public class MySqliteDatabase extends SQLiteOpenHelper {
         String[] selectionArgs = {isRead ? "1" : "0"};
 
         // How the results will be sorted (by author name)
-        String sortOrder = DatabaseContract.BookEntry.COL_AUTHOR + " ASC";
+        String sortOrder = sortByCol + (isOrderAsc ? " ASC" : " DESC");
 
         return select(DatabaseContract.BookEntry.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder, null);
     }
 
-    public ArrayList<ArcBook> getBooksReadFilter(boolean isRead) {
+    public ArrayList<ArcBook> getBooksReadFilter(boolean isRead, String sortByCol, boolean isOrderAsc) {
         ArrayList<ArcBook> booksList = new ArrayList<>();
 
-        Cursor cursor = getBooksReadFilterCursor(isRead);
+        Cursor cursor = getBooksReadFilterCursor(isRead, sortByCol, isOrderAsc);
         // Cursor Starts at -1, so moveToNext() method updates cursor's "read position" to be the first entry.
         // moveToNext() also returns false if the cursor is past the last entry, or true otherwise.
         // To get columns values, use get<Type>() cursor's methods, which receive index of the column.
@@ -93,7 +93,7 @@ public class MySqliteDatabase extends SQLiteOpenHelper {
                             cursor.getInt(cursor.getColumnIndex(DatabaseContract.BookEntry.COL_LANGUAGE)),
                             cursor.getInt(cursor.getColumnIndex(DatabaseContract.BookEntry.COL_PUBLISH_YEAR)),
                             cursor.getInt(cursor.getColumnIndex(DatabaseContract.BookEntry.COL_GENRE)),
-                            cursor.getInt(cursor.getColumnIndex(DatabaseContract.BookEntry.COL_IS_AVAILABLE)) == 1 ? true : false,
+                            cursor.getInt(cursor.getColumnIndex(DatabaseContract.BookEntry.COL_IS_AVAILABLE)) == 1,
                             isRead
                     ),
                     cursor.getString(cursor.getColumnIndex(DatabaseContract.BookEntry.COL_ADD_TIME))
@@ -166,13 +166,29 @@ public class MySqliteDatabase extends SQLiteOpenHelper {
                             cursor.getInt(cursor.getColumnIndex(DatabaseContract.BookEntry.COL_LANGUAGE)),
                             cursor.getInt(cursor.getColumnIndex(DatabaseContract.BookEntry.COL_PUBLISH_YEAR)),
                             cursor.getInt(cursor.getColumnIndex(DatabaseContract.BookEntry.COL_GENRE)),
-                            cursor.getInt(cursor.getColumnIndex(DatabaseContract.BookEntry.COL_IS_AVAILABLE)) == 1 ? true : false,
-                            cursor.getInt(cursor.getColumnIndex(DatabaseContract.BookEntry.COL_IS_READ)) == 1 ? true : false
+                            cursor.getInt(cursor.getColumnIndex(DatabaseContract.BookEntry.COL_IS_AVAILABLE)) == 1,
+                            cursor.getInt(cursor.getColumnIndex(DatabaseContract.BookEntry.COL_IS_READ)) == 1
                             ),
                     cursor.getString(cursor.getColumnIndex(DatabaseContract.BookEntry.COL_ADD_TIME))
             );
         }
         return book;
+    }
+
+    /*
+        Function updates the column IsRead of a book record to a given value
+        Input: Id of a book record, value for IsRead column (true/false)
+        Output: None
+     */
+    public void updateColIsRead(int id, boolean isRead) {
+        SQLiteDatabase db = getWritableDatabase();
+        String selection = DatabaseContract.BookEntry._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(id)};
+
+        ContentValues values = new ContentValues();
+        values.put(DatabaseContract.BookEntry.COL_IS_READ, isRead);
+
+        db.update(DatabaseContract.BookEntry.TABLE_NAME, values, selection, selectionArgs);
     }
 
 }

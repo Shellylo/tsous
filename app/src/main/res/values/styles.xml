@@ -38,4 +38,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="DialogBoxTitle" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorAccentLight</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:fontFamily">@font/russo_one</item>
+    </style>
+
 </resources>

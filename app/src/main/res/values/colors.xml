@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#976634</color>
     <color name="SecondLevelTitle">#346383</color>
     <color name="colorAccent">#3C4A4E</color>
-    <color name="colorAccentLight">#E4E4E6</color>
+    <color name="colorAccentLight">#FFFFFF</color>
     <color name="colorUnavailableResource">#BBBBBB</color>
     <color name="colorUnavailableResourceText">#949494</color>
 </resources>

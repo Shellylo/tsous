@@ -29,4 +29,10 @@
         <item>שירה</item>
     </string-array>
 
+    <string name="book_options_dialog_title">Options</string>
+    <string-array name="book_dialog_options">
+        <item>Mark book as read</item>
+        <item>Delete</item>
+    </string-array>
+
 </resources>
